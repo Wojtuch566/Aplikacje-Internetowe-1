@@ -1,0 +1,143 @@
+body
+{
+	background-color: #444;
+	color: snow;
+	font-family: 'Tahoma';
+	margin: 0;
+}
+
+#header
+{
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	width: 100%;
+	background-image: url("jalen-banks-_oLbCZFLN5Q-unsplash.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no repeat;
+}
+
+#nav
+{
+	float: left;
+	width: 30%;
+	min-height: 500px;
+}
+
+#content
+{
+	float: left;
+	width: 70%;
+	background-color: #666;
+	min-height: 500px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#content p
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: justify;
+}
+
+#content h2
+{
+	margin-left: 20px;
+}
+
+#content h3
+{
+	margin-left: 20px;
+}
+
+
+#footer
+{
+	clear: both;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #222;
+	text-align: center;
+}
+
+ul
+{
+	margin: 0;
+	padding: 20px;
+}
+
+ul li
+{
+	text-decoration: none;
+	color: snow;
+	list-style-type: none;
+	padding: 8px 14px 8px;
+}
+
+ul li:hover
+{
+	background-color: #505050;
+	cursor: pointer;
+}
+
+a:active
+{
+	text-decoration: none;
+}
+
+#faker
+{
+	height: 220px;
+	display: block;
+	float: left;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+@media (max-width: 850px)
+{
+	#nav
+	{
+		width: 100%;
+		float: none;
+		min-height: auto;
+	}
+	
+	#content
+	{
+		float: none;
+		width: 100%;
+	}
+	
+	ul
+	{
+		padding: 20px;
+	}
+	
+	ul li
+	{
+		display: inline-block;
+		padding: 8px 14px 8px;
+	}
+	
+	#faker
+	{
+		margin-left: auto;
+		margin-right: auto;
+		float: none;
+		height: auto;
+		width: 90%;
+	}
+}
+
+@media (min-width: 1200px)
+{
+	#faker
+	{
+		height: 150px;
+	}
+}
