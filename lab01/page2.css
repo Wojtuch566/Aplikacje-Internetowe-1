@@ -82,9 +82,10 @@ ul li:hover
 {
 	margin-left: 20px;
 	border-radius: 16px;
-	
 	width: 75%;
 }
+
+
 
 p:last-child
 {
@@ -111,12 +112,55 @@ p:last-child
 	border-radius: 16px;
 }
 
+@media (min-width: 1001px)
+{
+	#faker
+	{
+		box-shadow: 180px 100px whitesmoke;
+	}
+	
+	p:last-child
+	{
+		box-shadow: 180px 100px whitesmoke;
+	}
+}
+
 @media (max-width: 1000px)
 {
 	ul li
 	{
 		margin-left: auto;
 		margin-right: auto;
+	}
+	
+	#header
+	{
+		width: 90%;
+	}
+	
+	ul
+	{
+		width: 90%;
+	}
+	
+	#content
+	{
+		width: 90%;
+	}
+	
+	#footer
+	{
+		width: 90%;
+	}
+	
+	#content h2
+	{
+		text-align: center;
+	}
+	
+	#content h3
+	{
+		text-align: center;
 	}
 	
 	#faker

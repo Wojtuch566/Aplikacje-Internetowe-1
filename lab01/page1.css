@@ -122,6 +122,8 @@ a:active
 	{
 		display: inline-block;
 		padding: 8px 14px 8px;
+		margin-left: auto !important;
+		margin-right: auto !important;
 	}
 	
 	#faker
