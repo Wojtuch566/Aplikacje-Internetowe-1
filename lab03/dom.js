@@ -6,8 +6,14 @@ document.todo = {
 
     init: function () {
         for (let i = 0; i < this.tasks.length; i++) {
-            console.log(this.tasks.at(i));
+            console.log(this.tasks.at(i).at(0) + " " + this.tasks.at(i).at(1));
         }
+
+        this.draw();
+    },
+    
+    draw : function () {
+        const ul = document.getElementById("task-list");
     }
 }
-document.todo.init()
+document.todo.init();
