@@ -1,3 +1,38 @@
 body {
-  background-color: darksalmon;
+    background-color: darksalmon;
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    width: 700px;
+
+    .grid-item {
+        width: 320px;
+        height: 320px;
+        border: 1px solid blanchedalmond;
+    }
+}
+
+#controls {
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+    margin-top: 20px;
+
+    button {
+        width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: darksalmon;
+
+        &:hover {
+            background-color: darksalmon - 20%;
+            cursor: pointer;
+        }
+    }
 }
