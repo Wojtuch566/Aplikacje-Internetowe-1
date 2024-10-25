@@ -26,11 +26,16 @@ button {
 
 ul {
     list-style: none;
+    width: 90%;
 }
 
 ul li {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 65% 20% 5%;
+    text-align: justify;
+    border-bottom: 1px solid darkslateblue;
+    padding-bottom: 4px;
+    padding-top: 4px;
 }
 
 #search-item {
@@ -45,4 +50,8 @@ ul li {
 .material-symbols-outlined:hover {
     cursor: pointer;
     color: black;
+}
+
+.tasklist-name {
+    margin-right: 5%;
 }

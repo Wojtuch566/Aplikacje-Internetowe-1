@@ -20,21 +20,55 @@ document.todo = {
         addButton.addEventListener('click', () => {
             this.addTask();
         });
+
+        const searchInput = document.getElementById('search-item');
+        searchInput.addEventListener('input', () => this.searchTasks(searchInput.value))
     },
     
-    draw : function () {
+    draw : function (filteredTasks = this.tasks) {
         const ul = document.getElementById("task-list");
         ul.innerHTML = '';
 
-        this.tasks.forEach((task, index) => {
+        filteredTasks.forEach((task, index) => {
             const li = document.createElement('li');
 
-            //elementów taska
+            //elementy taska
             const taskDiv = document.createElement('div');
+            taskDiv.classList.add('tasklist-name');
             taskDiv.textContent = task[0];
             li.appendChild(taskDiv);
 
+            //edycja nazwy
+            taskDiv.addEventListener('click', () => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = task[0];
+                input.classList.add('tasklist-name');
+                taskDiv.replaceWith(input);
+
+                //zapis
+                const saveEdit = () => {
+                    const trimmedValue = input.value.trim();
+
+                    if (trimmedValue.length >= 2) {
+                        task[0] = input.value.trim();
+                        this.saveTasks();
+                        this.draw(filteredTasks);
+                        this.debugList();
+                    } else {
+                        alert("Nazwa zadania musi mieć co najmniej 2 znaki!");
+                        this.draw(filteredTasks);
+                    }
+                };
+
+                //zapis przy opuszczeniu edycji
+                input.addEventListener('blur', saveEdit);
+
+                input.focus();
+            });
+
             const dateDiv = document.createElement('div');
+            dateDiv.classList.add('tasklist-date');
             dateDiv.textContent = formatDate(task[1]);
             li.appendChild(dateDiv);
 
@@ -67,24 +101,40 @@ document.todo = {
         const taskDate = document.getElementById('task-date').value;
 
         if (taskName && taskDate) {
-            this.tasks.push([taskName, taskDate]);
+            if (taskName.length < 3) {
+                alert("Podaj minimum 3 znaki!");
+            } else if (taskName.length > 255) {
+                alert("Maksymalna ilość znaków 255!")
+            } else {
+                this.tasks.push([taskName, taskDate]);
 
-            this.saveTasks();
-            this.debugList();
+                this.saveTasks();
+                this.debugList();
 
-            document.getElementById('task-name').value = '';
-            document.getElementById('task-date').value = '';
-            this.draw();
+                document.getElementById('task-name').value = '';
+                document.getElementById('task-date').value = '';
+                this.draw();
+            }
         } else {
             alert("Wypełnij pola!");
+        }
+    },
+
+    searchTasks: function (searchTerm) {
+        if (searchTerm.length >= 2) {
+            const filteredTasks = this.tasks.filter(task =>
+                task[0].toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            this.draw(filteredTasks);
+        } else {
+            this.draw();
         }
     },
 
     saveTasks: function () {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
-
-
 }
 document.todo.init();
 
