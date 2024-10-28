@@ -1,8 +1,7 @@
 document.todo = {
     tasks: JSON.parse(localStorage.getItem('tasks')) || [
-        ['Zadanie 1', '2025-07-04'],
-        ['Zadanie 2', '2024-11-11'],
-        ['Zadanie 3', '2024-11-16']
+        ['Zadanie 1', ''],
+        ['Zadanie 2', '2024-11-11']
     ],
 
     debugList: function () {
