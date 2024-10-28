@@ -25,7 +25,7 @@ document.todo = {
         searchInput.addEventListener('input', () => this.searchTasks(searchInput.value))
     },
     
-    draw : function (filteredTasks = this.tasks) {
+    draw : function (filteredTasks = this.tasks, highlightTerm = '') {
         const ul = document.getElementById("task-list");
         ul.innerHTML = '';
 
@@ -35,7 +35,12 @@ document.todo = {
             //elementy taska
             const taskDiv = document.createElement('div');
             taskDiv.classList.add('tasklist-name');
-            taskDiv.textContent = task[0];
+            if (highlightTerm) {
+                const regex = new RegExp(`(${highlightTerm})`, 'gi');
+                taskDiv.innerHTML = task[0].replace(regex, `<span class="highlight">$1</span>`);
+            } else {
+                taskDiv.textContent = task[0];
+            }
             li.appendChild(taskDiv);
 
             //edycja nazwy
@@ -50,14 +55,20 @@ document.todo = {
                 const saveEdit = () => {
                     const trimmedValue = input.value.trim();
 
-                    if (trimmedValue.length >= 2) {
-                        task[0] = input.value.trim();
-                        this.saveTasks();
-                        this.draw(filteredTasks);
-                        this.debugList();
+                    if (trimmedValue.length > 255) {
+                        alert("Maksymalna ilość znaków 255!")
+                        this.draw(filteredTasks, highlightTerm);
                     } else {
-                        alert("Nazwa zadania musi mieć co najmniej 2 znaki!");
-                        this.draw(filteredTasks);
+                        if (trimmedValue.length >= 3) {
+                            task[0] = input.value.trim();
+                            this.saveTasks();
+                            this.draw(filteredTasks, highlightTerm);
+                            console.log("Zmieniono nazwę: [" + task[0] + " | " + task[1] + "]");
+                            this.debugList();
+                        } else {
+                            alert("Podaj minimum 3 znaki!");
+                            this.draw(filteredTasks, highlightTerm);
+                        }
                     }
                 };
 
@@ -69,8 +80,44 @@ document.todo = {
 
             const dateDiv = document.createElement('div');
             dateDiv.classList.add('tasklist-date');
+            if (task[1] === '') {
+                dateDiv.style.color = 'transparent';
+            }
             dateDiv.textContent = formatDate(task[1]);
             li.appendChild(dateDiv);
+
+            //edycja daty
+            dateDiv.addEventListener('click', () => {
+                const input = document.createElement('input');
+                input.type = 'date';
+                input.value = task[1];
+                input.classList.add('tasklist-date');
+                dateDiv.replaceWith(input);
+
+                //zapis
+                const saveEdit = () => {
+                    const trimmedValue = input.value.trim();
+
+                    const selectedDate = new Date(trimmedValue);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (selectedDate < today) {
+                        alert('Data musi być co najmniej dzisiejsza!')
+                        this.draw(filteredTasks);
+                    } else {
+                        task[1] = input.value.trim();
+                        this.saveTasks();
+                        this.draw(filteredTasks);
+                        console.log("Zmieniono datę: [" + task[0] + " | " + task[1] + "]");
+                        this.debugList();
+                    }
+                }
+
+                //zapis przy opuszczeniu edycji
+                input.addEventListener('blur', saveEdit);
+                input.focus();
+            });
 
             const deleteDiv = document.createElement('div');
             const deleteIcon = document.createElement('span');
@@ -90,6 +137,7 @@ document.todo = {
     },
 
     deleteTask: function (index) {
+        console.log("Usunięto: [" + this.tasks[index][0] + " | " + this.tasks[index][1] + "]");
         this.tasks.splice(index, 1);
         this.saveTasks();
         this.debugList();
@@ -100,23 +148,34 @@ document.todo = {
         const taskName = document.getElementById('task-name').value;
         const taskDate = document.getElementById('task-date').value;
 
-        if (taskName && taskDate) {
+        if (taskName) {
             if (taskName.length < 3) {
                 alert("Podaj minimum 3 znaki!");
             } else if (taskName.length > 255) {
                 alert("Maksymalna ilość znaków 255!")
             } else {
-                this.tasks.push([taskName, taskDate]);
+                const selectedDate = new Date(taskDate);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
 
-                this.saveTasks();
-                this.debugList();
+                if (selectedDate < today) {
+                    alert("Data musi być co najmniej dzisiejsza!");
+                    this.draw();
+                } else {
+                    this.tasks.push([taskName, taskDate]);
 
-                document.getElementById('task-name').value = '';
-                document.getElementById('task-date').value = '';
-                this.draw();
+                    this.saveTasks();
+                    console.log("Dodano: [" + taskName + " | " + taskDate + "]");
+                    this.debugList();
+
+                    document.getElementById('search-item').value = '';
+                    document.getElementById('task-name').value = '';
+                    document.getElementById('task-date').value = '';
+                    this.draw();
+                }
             }
         } else {
-            alert("Wypełnij pola!");
+            alert("Podaj nazwę zadania!");
         }
     },
 
@@ -126,7 +185,7 @@ document.todo = {
                 task[0].toLowerCase().includes(searchTerm.toLowerCase())
             );
 
-            this.draw(filteredTasks);
+            this.draw(filteredTasks, searchTerm);
         } else {
             this.draw();
         }

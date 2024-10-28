@@ -55,3 +55,8 @@ ul li {
 .tasklist-name {
     margin-right: 5%;
 }
+
+.highlight {
+    background-color: orange;
+    font-weight: bold;
+}
