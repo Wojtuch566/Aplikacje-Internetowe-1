@@ -5,17 +5,26 @@
     <title>Puzzle z lokalizacji</title>
     <link rel="stylesheet/less" href="styles.less" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/less"></script>
+
+    <link rel="stylesheet" href="leaflet-1.7.1/leaflet.css"/>
+    <script src="leaflet-1.7.1/leaflet-src.js"></script>
+    <script src="leaflet-1.7.1/leaflet-providers.js"></script>
+    <script src="leaflet-1.7.1/leaflet-image.js"></script>
 </head>
 <body>
     <div id="container">
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
+        <div class="grid-item" id="current-loc"></div>
+        <div class="grid-item" id="map-image">
+            <canvas id="raster-map" width="320" height="320"></canvas>
+        </div>
         <div class="grid-item"></div>
         <div class="grid-item"></div>
     </div>
     <div id="controls">
-        <button>Moja lokalizacja</button>
-        <button>Pobierz mapę</button>
+        <button id="locButton">Moja lokalizacja</button>
+        <button>Zmień styl mapy</button>
+        <button id="saveButton">Pobierz mapę</button>
     </div>
+    <script type="text/javascript" src="puzzle.js"></script>
 </body>
 </html>
