@@ -3,15 +3,6 @@ if (Notification.permission !== 'granted' && Notification.permission !== 'denied
     Notification.requestPermission();
 }
 
-// //prośba o uprawnienia do lokalizacji
-// if (navigator.permissions) {
-//     navigator.permissions.query({ name: 'geolocation' }).then(permissionStatus => {
-//         if (permissionStatus.state === 'prompt') {
-//             alert("Proszę o zgodę na dostęp do lokalizacji.");
-//         }
-//     });
-// }
-
 //tworzenie mapy
 let map = L.map('current-loc').setView([53.430127, 14.564802], 18);
 
@@ -113,17 +104,11 @@ document.getElementById('saveButton').addEventListener("click", function (event)
                 target.height = tileSize;
                 target.dataset.index = index;
 
-                // target.addEventListener('dragstart', handleDragStart);
+                target.addEventListener('dragstart', handleDragStart);
                 target.addEventListener('dragover', handleDragOver);
-                // target.addEventListener('dragenter', function (event) {
-                //     this.style.backgroundColor = "#DD8B6F";
-                // });
-                // target.addEventListener('dragleave', function (event) {
-                //     this.style.backgroundColor = "#D38165";
-                // });
                 target.addEventListener('drop', handleDrop);
 
-                target.setAttribute('draggable', true);
+                // target.setAttribute('draggable', true);
             });
         }
     });
@@ -137,22 +122,9 @@ function shuffleTiles(array) {
     }
 }
 
-const puzzleTargets = document.querySelectorAll('.puzzle-target');
-
-puzzleTargets.forEach((target, index) => {
-    target.width = tileSize;
-    target.height = tileSize;
-    target.dataset.index = index;
-    target.dataset.placedIndex = null;
-
-    target.setAttribute('draggable', true);
-    target.addEventListener('dragstart', handleDragStart);
-    target.addEventListener('dragover', handleDragOver);
-    target.addEventListener('drop', handleDrop);
-});
-
 function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.dataset.index);
+    const index = event.target.dataset.index || event.target.dataset.placedIndex;
+    event.dataTransfer.setData('text/plain', index);
 }
 
 function handleDragOver(event) {
@@ -161,30 +133,32 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
     event.preventDefault();
+
     const draggedIndex = event.dataTransfer.getData('text/plain');
     const targetIndex = event.target.dataset.index;
 
-    const draggedCanvas = document.querySelector(`.puzzle-item[data-index="${draggedIndex}"]`) ||
-    document.querySelector(`.puzzle-target[data-placedIndex="${draggedIndex}"]`);
+    const draggedCanvas = document.querySelector(`[data-index="${draggedIndex}"]`);
     const targetCanvas = event.target;
 
-    //przenoszenie obrazu na miejsce docelowe
-    if (targetCanvas && draggedCanvas && draggedCanvas !== targetCanvas) {
-        const draggedContext = draggedCanvas.getContext('2d');
-        const targetContext = targetCanvas.getContext('2d');
+    //sprawdzenie, czy oba canvasy istnieją
+    if (!draggedCanvas || !targetCanvas || draggedCanvas === targetCanvas) return;
 
+    const draggedContext = draggedCanvas.getContext('2d');
+    const targetContext = targetCanvas.getContext('2d');
 
-        const draggedImageData = draggedContext.getImageData(0, 0, tileSize, tileSize);
-        const targetImageData = targetContext.getImageData(0, 0, tileSize, tileSize);
-        targetContext.putImageData(draggedImageData, 0, 0);
-        draggedContext.clearRect(0, 0, tileSize, tileSize);
+    const draggedImageData = draggedContext.getImageData(0, 0, tileSize, tileSize);
+    const targetImageData = targetContext.getImageData(0, 0, tileSize, tileSize);
 
-        const tempPlacedIndex = targetCanvas.dataset.placedIndex;
-        targetCanvas.dataset.placedIndex = draggedIndex;
-        draggedCanvas.dataset.placedIndex = tempPlacedIndex || null;
+    //zamiana obrazów między canvasami
+    draggedContext.putImageData(targetImageData, 0, 0);
+    targetContext.putImageData(draggedImageData, 0, 0);
 
-        checkPuzzleCompletion();
-    }
+    //aktualizacja indeksów dataset
+    const tempPlacedIndex = targetCanvas.dataset.placedIndex;
+    targetCanvas.dataset.placedIndex = draggedIndex;
+    draggedCanvas.dataset.index = tempPlacedIndex || draggedIndex;
+
+    checkPuzzleCompletion();
 }
 
 function checkPuzzleCompletion() {
@@ -193,7 +167,7 @@ function checkPuzzleCompletion() {
 
     puzzleTargets.forEach((target, index) => {
         const placedIndex = target.dataset.placedIndex;
-        if (placedIndex != index) {
+        if (Number(placedIndex) !== index) {
             isCompleted = false;
         }
     });
@@ -201,20 +175,6 @@ function checkPuzzleCompletion() {
     if (isCompleted) {
         showCompletionNotification();
     }
-}
-
-function compareImageData(imageData1, imageData2) {
-    if (!imageData1 || !imageData2 || imageData1.data.length !== imageData2.data.length) {
-        return false;
-    }
-
-    for (let i = 0; i < imageData1.data.length; i++) {
-        if (imageData1.data[i] !== imageData2.data[i]) {
-            return false;
-        }
-    }
-
-    return true;
 }
 
 function showCompletionNotification() {
