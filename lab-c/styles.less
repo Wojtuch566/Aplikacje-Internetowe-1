@@ -30,7 +30,7 @@ body {
         margin-right: auto;
         background-color: darksalmon;
 
-        &:hover {
+        &:hover:enabled {
             background-color: darksalmon - 20%;
             cursor: pointer;
         }
@@ -43,7 +43,6 @@ body {
     grid-template-rows: auto auto auto auto;
 
     .puzzle-item {
-        //border: 1px solid blanchedalmond;
         width: 80px;
         height: 80px;
     }
@@ -58,5 +57,16 @@ body {
     .puzzle-target {
         width: 80px;
         height: 80px;
+        z-index: 1;
+    }
+
+    #complete-status {
+        background-color: forestgreen;
+        position: absolute;
+        z-index: 2;
+        opacity: 0.5;
+        width: 320px;
+        height: 320px;
+        display: none;
     }
 }

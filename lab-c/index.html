@@ -15,7 +15,7 @@
     <div id="container">
         <div class="grid-item" id="current-loc"></div>
         <div class="grid-item" id="map-image">
-            <canvas id="raster-map" width="320" height="320"></canvas>
+            <canvas id="raster-map"></canvas>
         </div>
         <div class="grid-item" id="map-puzzle">
             <canvas class="puzzle-item"></canvas>
@@ -36,6 +36,7 @@
             <canvas class="puzzle-item"></canvas>
         </div>
         <div class="grid-item" id="puzzle-completed">
+            <div id="complete-status"></div>
             <canvas class="puzzle-target"></canvas>
             <canvas class="puzzle-target"></canvas>
             <canvas class="puzzle-target"></canvas>
@@ -56,7 +57,7 @@
     </div>
     <div id="controls">
         <button id="locButton">Moja lokalizacja</button>
-        <button id="styleButton">Zmień styl mapy</button>
+        <button id="styleButton" disabled>Zmień styl mapy</button>
         <button id="saveButton">Pobierz mapę</button>
     </div>
     <script type="text/javascript" src="puzzle.js"></script>

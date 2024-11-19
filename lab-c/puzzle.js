@@ -54,6 +54,7 @@ document.getElementById('styleButton').addEventListener("click", function (event
 
 //tworzenie canvasu i podział na puzzle
 document.getElementById('saveButton').addEventListener("click", function (event) {
+    document.getElementById('complete-status').style.display = "none";
     leafletImage(map, function (err, canvas) {
         let rasterMap = document.getElementById('raster-map');
         rasterMap.width = 320;
@@ -103,6 +104,7 @@ document.getElementById('saveButton').addEventListener("click", function (event)
                 target.width = tileSize;
                 target.height = tileSize;
                 target.dataset.index = index;
+                target.dataset.placedIndex = null; //wyzerowanie przy ponownym generowaniu kafelków
 
                 target.addEventListener('dragstart', handleDragStart);
                 target.addEventListener('dragover', handleDragOver);
@@ -174,11 +176,15 @@ function checkPuzzleCompletion() {
 
     if (isCompleted) {
         showCompletionNotification();
+        document.getElementById('complete-status').style.display = "block";
+    } else {
+        document.getElementById('complete-status').style.display = "none";
     }
 }
 
 function showCompletionNotification() {
     if (Notification.permission === 'granted') {
+
         new Notification('Gratulacje!', {
             body: "Puzzle zostały ułożone."
         });
