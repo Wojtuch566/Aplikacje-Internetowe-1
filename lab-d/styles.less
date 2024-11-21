@@ -37,7 +37,7 @@ body {
 }
 
 #weather-currentTime {
-    width: 400px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -45,6 +45,33 @@ body {
     background-color: cornflowerblue;
     box-shadow: 4px 4px darkslateblue;
     padding: 20px;
+    font-family: "Segoe UI Light";
+    display: grid;
+    grid-template-columns: auto auto auto;
 
+    .weather-date {
+        letter-spacing: 5px;
+    }
 
+    .weather-date-hour {
+        font-size: 50px;
+    }
+
+    .weather-temperature {
+        font-size: 100px;
+        text-align: right;
+    }
+
+    .weather-temperature-feels-like {
+        font-size: 22px;
+        text-align: right;
+    }
+    .weather-description {
+        text-align: right;
+    }
+
+    .weather-icon {
+        height: 200px !important;
+    }
 }
+
