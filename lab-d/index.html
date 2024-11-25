@@ -13,49 +13,168 @@
         <button id="weatherCheck">Zobacz aktualną pogodę</button>
     </div>
     <div id="weather-result">
-        <div id="weather-currentTime">
-            <div class="weather-column">
-                <div class="weather-date">12.12.2024</div>
-                <div class="weather-date-hour">20:00</div>
-            </div>
-            <div class="weather-column">
-                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">
-            </div>
-            <div class="weather-column">
-                <div class="weather-description">opady śniegu</div>
-                <div class="weather-temperature">
-                    0 &deg;C
-                </div>
-                <div class="weather-temperature-feels-like">Odczuwalna: -2 &deg;C</div>
-            </div>
-        </div>
-        <div id="weather-dayTime">
-            <h2>Reszta dnia</h2>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-            <div class="weather-hourTime"></div>
-        </div>
+<!--        <div class="weather-currentTime">-->
+<!--            <div class="weather-column">-->
+<!--                <div class="weather-date">12.12.2024</div>-->
+<!--                <div class="weather-date-hour">20:00</div>-->
+<!--            </div>-->
+<!--            <div class="weather-column">-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--            </div>-->
+<!--            <div class="weather-column">-->
+<!--                <div class="weather-description">opady śniegu</div>-->
+<!--                <div class="weather-temperature">-->
+<!--                    0 &deg;C-->
+<!--                </div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: -2 &deg;C</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="weather-dayTime">-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">21:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">22:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">23:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">00:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">01:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">02:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">03:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">04:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">05:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">06:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">07:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">08:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">09:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">10:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">11:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">12:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">13:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">14:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">15:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">16:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">17:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">18:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">19:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--            <div class="weather-hourTime">-->
+<!--                <div class="weather-date-hour">20:00</div>-->
+<!--                <img class="weather-icon" src="https://openweathermap.org/img/wn/13n@2x.png">-->
+<!--                <div class="weather-temperature">15 &deg;C</div>-->
+<!--                <div class="weather-temperature-feels-like">Odczuwalna: 8 &deg;C</div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
     <script src="pogodynka.js"></script>
 </body>

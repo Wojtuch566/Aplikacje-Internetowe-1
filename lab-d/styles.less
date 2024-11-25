@@ -33,11 +33,51 @@ body {
 }
 
 #weather-dayTime {
-    display: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    //grid-template-columns: auto auto auto auto;
+    //column-gap: 5%;
+    //row-gap: 5%;
+
+    .weather-hourTime {
+        background-color: mediumblue;
+        box-shadow: 4px 4px deepskyblue;
+        border-radius: 5px;
+        padding: 10px;
+        width: 160px;
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 16px;
+
+        .weather-date-hour {
+            text-align: center;
+            font-size: 30px;
+            font-family: "Segoe UI Light";
+        }
+
+        .weather-icon {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            height: 150px;
+        }
+
+        .weather-temperature {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .weather-temperature-feels-like {
+            text-align: center;
+        }
+    }
 }
 
-#weather-currentTime {
-    width: 500px;
+.weather-currentTime {
+    width: 750px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
