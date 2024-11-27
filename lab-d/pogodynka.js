@@ -8,6 +8,25 @@ const WeatherApp = class {
 
         this.currentWeather = undefined;
         this.forecast = undefined;
+
+        this.applySeasonalTheme();
+    }
+
+    applySeasonalTheme() {
+        const body = document.body;
+        const month = new Date().getMonth();
+
+        body.classList.remove("winter", "spring", "summer", "autumn");
+
+        if (month === 11 || month === 0 || month === 1) {
+            body.classList.add("winter");
+        } else if (month >= 2 && month <= 4) {
+            body.classList.add("spring");
+        } else if (month >= 5 && month <= 7) {
+            body.classList.add("summer");
+        } else if (month >= 8 && month <= 10) {
+            body.classList.add("autumn");
+        }
     }
 
     getCurrentWeather(query) {
@@ -106,7 +125,8 @@ const WeatherApp = class {
                     `${date.toLocaleTimeString("pl-PL", {hour: '2-digit', minute: '2-digit'})}`,
                     weather.main.temp.toFixed(2),
                     weather.main.feels_like.toFixed(2),
-                    weather.weather[0].icon
+                    weather.weather[0].icon,
+                    weather.weather[0].description
                 );
                 forecastMainBlock.appendChild(forecastBlock);
             }
@@ -169,7 +189,7 @@ const WeatherApp = class {
         return weatherBlock;
     }
 
-    createForecastBlock(hourString, temperature, feelsLikeTemperature, iconName) {
+    createForecastBlock(hourString, temperature, feelsLikeTemperature, iconName, description) {
         const forecastBlock = document.createElement("div");
         forecastBlock.className = "weather-hourTime";
 
@@ -183,6 +203,8 @@ const WeatherApp = class {
         const weatherIcon = document.createElement("img");
         weatherIcon.className = "weather-icon";
         weatherIcon.src = `https://openweathermap.org/img/wn/${iconName}@2x.png`;
+        weatherIcon.alt = description;
+        weatherIcon.title = description;
         forecastBlock.appendChild(weatherIcon);
 
         //temperatury
