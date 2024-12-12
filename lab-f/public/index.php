@@ -8,6 +8,8 @@ $router = new \App\Service\Router();
 
 $action = $_REQUEST['action'] ?? null;
 switch ($action) {
+
+    //post cases
     case 'post-index':
     case null:
         $controller = new \App\Controller\PostController();
@@ -38,6 +40,38 @@ switch ($action) {
         $controller = new \App\Controller\PostController();
         $view = $controller->deleteAction($_REQUEST['id'], $router);
         break;
+
+    //game cases
+    case 'game-index':
+        $controller = new \App\Controller\GameController();
+        $view = $controller->indexAction($templating, $router);
+        break;
+    case 'game-create':
+        $controller = new \App\Controller\GameController();
+        $view = $controller->createAction($_REQUEST['game'] ?? null, $templating, $router);
+        break;
+    case 'game-edit':
+        if (! $_REQUEST['gameId']) {
+            break;
+        }
+        $controller = new \App\Controller\GameController();
+        $view = $controller->editAction($_REQUEST['gameId'], $_REQUEST['game'] ?? null, $templating, $router);
+        break;
+    case 'game-show':
+        if (! $_REQUEST['gameId']) {
+            break;
+        }
+        $controller = new \App\Controller\GameController();
+        $view = $controller->showAction($_REQUEST['gameId'], $templating, $router);
+        break;
+    case 'game-delete':
+        if (! $_REQUEST['gameId']) {
+            break;
+        }
+        $controller = new \App\Controller\GameController();
+        $view = $controller->deleteAction($_REQUEST['gameId'], $router);
+        break;
+
     case 'info':
         $controller = new \App\Controller\InfoController();
         $view = $controller->infoAction();
