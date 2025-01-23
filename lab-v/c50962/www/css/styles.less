@@ -1,0 +1,231 @@
+@font-color: antiquewhite;
+@main-winter-color: cornflowerblue;
+@sec-winter-color: darkslateblue;
+
+@main-spring-color: mediumseagreen;
+@sec-spring-color: forestgreen;
+
+@main-summer-color: #fafaaf;
+@sec-summer-color: #acac0f;
+
+@main-autumn-color: orangered;
+@sec-autumn-color: darkred;
+
+body {
+    margin: 0;
+    padding: 0;
+    //background-color: midnightblue;
+    background: url("aaron-burden-5AiWn2U10cw-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Tahoma';
+    color: antiquewhite;
+    min-height: 90vh;
+
+    h1 {
+        text-align: center;
+        text-shadow: 4px 4px 10px @main-winter-color;
+    }
+}
+
+#weather-search-box {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: @main-winter-color;
+    box-shadow: 4px 4px @sec-winter-color;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 20px;
+
+    button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input {
+        width: 250px;
+    }
+}
+
+.weather-currentTime {
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: @main-winter-color;
+    box-shadow: 4px 4px @sec-winter-color;
+    color: @font-color;
+    padding: 20px;
+    font-family: "Segoe UI Light";
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    .weather-date {
+        letter-spacing: 5px;
+    }
+
+    .weather-date-hour {
+        font-size: 50px;
+    }
+
+    .weather-temperature {
+        font-size: 100px;
+        text-align: right;
+    }
+
+    .weather-temperature-feels-like {
+        font-size: 22px;
+        text-align: right;
+    }
+    .weather-description {
+        text-align: right;
+    }
+
+    .weather-icon {
+        height: 200px !important;
+    }
+}
+
+.weather-dayTime {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    //grid-template-columns: auto auto auto auto;
+    //column-gap: 5%;
+    //row-gap: 5%;
+
+    .weather-hourTime {
+        background-color: mediumblue;
+        box-shadow: 4px 4px deepskyblue;
+        border-radius: 5px;
+        padding: 10px;
+        width: 220px;
+        display: inline-block;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 16px;
+
+        .weather-date-hour {
+            text-align: center;
+            font-size: 30px;
+            font-family: "Segoe UI Light";
+        }
+
+        .weather-icon {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            height: 150px;
+        }
+
+        .weather-temperature {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .weather-temperature-feels-like {
+            text-align: center;
+        }
+    }
+}
+
+body.winter {
+    background: url("aaron-burden-5AiWn2U10cw-unsplash.jpg");
+
+    h1 {
+        text-shadow: 4px 4px 10px @main-winter-color;
+    }
+
+    #weather-search-box {
+        background-color: @main-winter-color;
+        box-shadow: 4px 4px @sec-winter-color;
+    }
+
+    .weather-currentTime {
+        background-color: @main-winter-color;
+        box-shadow: 4px 4px @sec-winter-color;
+        color: @font-color;
+    }
+
+    .weather-hourTime {
+        background-color: mediumblue;
+        box-shadow: 4px 4px deepskyblue;
+    }
+}
+
+body.spring {
+    background: url("daiga-ellaby-YnNczu62rdk-unsplash.jpg");
+
+    h1 {
+        text-shadow: 4px 4px 10px @main-spring-color;
+    }
+
+    #weather-search-box {
+        background-color: @main-spring-color;
+        box-shadow: 4px 4px @sec-spring-color;
+    }
+
+    .weather-currentTime {
+        background-color: @main-spring-color;
+        box-shadow: 4px 4px @sec-spring-color;
+        color: @font-color;
+    }
+
+    .weather-hourTime {
+        background-color: limegreen;
+        box-shadow: 4px 4px yellowgreen;
+    }
+}
+
+body.summer {
+    background: url("daiga-ellaby-YnNczu62rdk-unsplash.jpg");
+
+    h1 {
+        text-shadow: 4px 4px 10px @main-summer-color;
+    }
+
+    #weather-search-box {
+        background-color: @main-summer-color;
+        box-shadow: 4px 4px @sec-summer-color;
+    }
+
+    .weather-currentTime {
+        background-color: @main-summer-color;
+        box-shadow: 4px 4px @sec-summer-color;
+        color: @sec-summer-color;
+    }
+
+    .weather-hourTime {
+        background-color: darkgoldenrod;
+        box-shadow: 4px 4px gold;
+    }
+}
+
+body.autumn {
+    background: url("adam-bixby-Ix78f0AuCBI-unsplash.jpg");
+
+    h1 {
+        text-shadow: 4px 4px 10px @main-autumn-color;
+    }
+
+    #weather-search-box {
+        background-color: @main-autumn-color;
+        box-shadow: 4px 4px @sec-autumn-color;
+    }
+
+    .weather-currentTime {
+        background-color: @main-autumn-color;
+        box-shadow: 4px 4px @sec-autumn-color;
+        color: @font-color;
+    }
+
+    .weather-hourTime {
+        background-color: brown;
+        box-shadow: 4px 4px red;
+    }
+}
